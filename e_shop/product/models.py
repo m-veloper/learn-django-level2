@@ -9,6 +9,9 @@ class Product(models.Model):
     stuck = models.IntegerField(verbose_name='재고')
     register_date = models.DateTimeField(auto_now_add=True, verbose_name='등록일')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'product'
         verbose_name = '상품'
