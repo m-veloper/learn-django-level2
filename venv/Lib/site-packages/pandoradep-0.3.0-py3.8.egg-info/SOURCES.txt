@@ -1,0 +1,13 @@
+README.rst
+index.py
+setup.cfg
+setup.py
+pandoradep/__init__.py
+pandoradep/config.py
+pandoradep/utils.py
+pandoradep.egg-info/PKG-INFO
+pandoradep.egg-info/SOURCES.txt
+pandoradep.egg-info/dependency_links.txt
+pandoradep.egg-info/entry_points.txt
+pandoradep.egg-info/requires.txt
+pandoradep.egg-info/top_level.txt

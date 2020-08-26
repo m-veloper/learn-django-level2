@@ -1,0 +1,5 @@
+click
+catkin-pkg
+requests
+colorama
+pyYAML

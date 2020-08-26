@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pandoradep
+Version: 0.3.0
+Summary: A tiny cli tool to manage PANDORA's dependencies.
+Home-page: https://github.com/pandora-auth-ros-pkg/pandoradep
+Author: PANDORA Robotics Team
+Author-email: siderisk@auth.gr
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
