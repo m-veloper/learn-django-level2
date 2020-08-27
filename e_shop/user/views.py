@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
-from .form import RegisterForm
+from .form import RegisterForm, LoginForm
 
 # Create your views here.
 
