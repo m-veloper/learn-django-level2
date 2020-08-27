@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 from .models import User
 
 
@@ -36,7 +36,7 @@ class RegisterForm(forms.Form):
             else:
                 user = User(
                     email = email,
-                    password = password
+                    password = make_password(password)
                 )
                 user.save()
 
