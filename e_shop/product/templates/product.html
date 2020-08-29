@@ -21,8 +21,8 @@
 <!--          <th><a id="product-{{ product.id }}" onmouseenter="product_detail({{ product.id }});"-->
 <!--              onmouseleave="product_leave({{ product.id }});" href="/product/{{ product.id }}">{{ product.name }}</a>-->
 <!--          </th>-->
-<!--          <th>{{ product.price|intcomma }} 원</th>-->
-<!--          <th>{{ product.register_date|date:'Y-m-d H:i' }}</th>-->
+          <th>{{ product.price|intcomma }} 원</th>
+          <th>{{ product.register_date|date:'Y-m-d H:i' }}</th>
         </tr>
         {% endfor %}
       </tbody>
