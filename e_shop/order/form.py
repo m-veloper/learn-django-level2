@@ -1,44 +1,40 @@
 from django import forms
-from .models import Product
+from .models import Order
+from product.models import Product
+from user.models import User
+from django.db import transaction
+
 
 class RegisterForm(forms.Form):
-    name = forms.CharField(
+    def __init__(self, request, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.request = request
+
+    quantity = forms.IntegerField(
         error_messages={
-            'required': '상품명을 입력해주세요.'
-        },
-        max_length=64, label='상품명'
+            'required': '수량을 입력해주세요.'
+        }, label='수량'
     )
-    price = forms.IntegerField(
-        error_messages={
-            'required': '상품가격을 입력해주세요.'
-        }, label='상품가격'
-    )
-    description = forms.CharField(
+    product = forms.IntegerField(
         error_messages={
             'required': '상품설명을 입력해주세요.'
-        }, label='상품설명'
-    )
-    stock = forms.IntegerField(
-        error_messages={
-            'required': '재고를 입력해주세요.'
-        }, label='재고'
+        }, label='상품설명', widget=forms.HiddenInput
     )
 
     def clean(self):
         cleaned_data = super().clean()
-        name = cleaned_data.get('name')
-        price = cleaned_data.get('price')
-        description = cleaned_data.get('description')
-        stock = cleaned_data.get('stock')
+        quantity = cleaned_data.get('quantity')
+        product = cleaned_data.get('product')
+        user = self.request.session.get('user')
 
-        if not (name and price and description and stock):
-            self.add_error('name', '값이 없습니다')
-            self.add_error('price', '값이 없습니다')
-        else:
-            procuct = Product(
-                name = name,
-                price = price,
-                description = description,
-                stock = stock
+        if quantity and product and user:
+            order = Order(
+                quantity = quantity,
+                product = Product.objects.get(pk=product),
+                user = User.objects.get(email=user),
             )
-            procuct.save()
+            order.save()
+        else:
+            self.product = product
+            self.add_error('quantity', '값이 없습니다')
+            self.add_error('product', '값이 없습니다')
