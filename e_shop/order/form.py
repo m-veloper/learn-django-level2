@@ -22,20 +22,16 @@ class RegisterForm(forms.Form):
     )
 
     def clean(self):
-        
         cleaned_data = super().clean()
         quantity = cleaned_data.get('quantity')
         product = cleaned_data.get('product')
         user = self.request.session.get('user')
-
         if quantity and product and user:
-
             order = Order(
                 quantity = quantity,
                 product = Product.objects.get(pk=product),
                 user = User.objects.get(email=user),
             )
-
             order.save()
         else:
             self.product = product
