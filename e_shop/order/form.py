@@ -34,6 +34,7 @@ class RegisterForm(forms.Form):
                 user = User.objects.get(email=user),
             )
             order.save()
+            
         else:
             self.product = product
             self.add_error('quantity', '값이 없습니다')
